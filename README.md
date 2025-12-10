@@ -25,19 +25,19 @@ Includes a Postgres-backed repository and a fully in-memory repository for tests
 ## Setup (Quick Start)
 
 ### 1. Start Postgres
-docker-compose up -d
+```docker-compose up -d```
 
 ### 2. Create `.env`
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/orders_db
 SERVER_BIND=127.0.0.1:8080
 
 ### 3. Apply migrations
-sqlx migrate run
+```sqlx migrate run```
 
 ### 4. Run API server
-cargo run
+```cargo run```
 
 ## Testing
 Runs fully in-memory (no DB needed):
 
-cargo test
+```cargo test```
