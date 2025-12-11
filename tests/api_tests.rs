@@ -80,7 +80,7 @@ async fn test_create_get_update_delete_order() {
     let resp = test::call_service(&app, req).await;
     assert_eq!(resp.status(), 204);
 
-    // 5. GET AGAIN → SHOULD BE 404
+    // 5. GET after deletion → Error 404
     let req = test::TestRequest::get()
         .uri(&format!("/orders/{}", id))
         .to_request();

@@ -18,7 +18,6 @@ pub struct Order {
     pub customer_name: String,
     pub item: String,
     pub quantity: i32,
-    /// Price stored as cents to avoid floating point money problems
     pub price_cents: i64,
     pub status: OrderStatus,
     pub created_at: DateTime<Utc>,
@@ -30,7 +29,6 @@ pub struct CreateOrder {
     pub customer_name: String,
     pub item: String,
     pub quantity: i32,
-    /// Price as decimal in major units (e.g., 12.34) -> we'll convert to cents
     pub price: f64,
 }
 

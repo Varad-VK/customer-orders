@@ -64,9 +64,7 @@ impl SqlOrderRepository {
 
 #[async_trait]
 impl OrderRepository for SqlOrderRepository {
-    // -----------------------------------------------------
     // CREATE ORDER
-    // -----------------------------------------------------
     async fn create_order(&self, input: CreateOrder) -> Result<Order, ServiceError> {
         if input.quantity <= 0 {
             return Err(ServiceError::BadRequest("quantity must be > 0".into()));
@@ -113,9 +111,7 @@ impl OrderRepository for SqlOrderRepository {
         })
     }
 
-    // -----------------------------------------------------
     // GET ORDER
-    // -----------------------------------------------------
     async fn get_order(&self, id: Uuid) -> Result<Order, ServiceError> {
         let query = r#"
             SELECT id, customer_name, item, quantity,
@@ -135,9 +131,7 @@ impl OrderRepository for SqlOrderRepository {
         }
     }
 
-    // -----------------------------------------------------
     // LIST ORDERS
-    // -----------------------------------------------------
     async fn list_orders(&self) -> Result<Vec<Order>, ServiceError> {
         let query = r#"
             SELECT id, customer_name, item, quantity,
@@ -156,9 +150,7 @@ impl OrderRepository for SqlOrderRepository {
         Ok(list)
     }
 
-    // -----------------------------------------------------
     // UPDATE STATUS
-    // -----------------------------------------------------
     async fn update_status(&self, id: Uuid, status: OrderStatus) -> Result<Order, ServiceError> {
         let status_str = Self::status_to_str(&status);
         let now = Utc::now();
@@ -183,9 +175,7 @@ impl OrderRepository for SqlOrderRepository {
         self.get_order(id).await
     }
 
-    // -----------------------------------------------------
     // DELETE ORDER
-    // -----------------------------------------------------
     async fn delete_order(&self, id: Uuid) -> Result<(), ServiceError> {
         let query = r#"
             DELETE FROM orders WHERE id = $1
