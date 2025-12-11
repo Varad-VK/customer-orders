@@ -22,7 +22,7 @@ Includes a Postgres-backed repository and a fully in-memory repository for tests
 - SQLx CLI:
   cargo install sqlx-cli --no-default-features --features postgres
 
-## Setup (Quick Start)
+## Setup
 
 ### 1. Start Postgres
 ```docker-compose up -d```
